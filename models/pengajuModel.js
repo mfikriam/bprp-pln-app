@@ -1,6 +1,10 @@
 const { DataTypes } = require('sequelize');
 
 const pengajuSchema = {
+  nama: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   jabatan: {
     type: DataTypes.STRING(100),
     allowNull: false,

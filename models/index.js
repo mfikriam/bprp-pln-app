@@ -19,10 +19,12 @@ const sequelize = new Sequelize(
 
 const Pegawai = sequelize.define('pegawai', pegawaiSchema, {
   underscored: true,
+  timestamps: false,
 });
 
 const Pengaju = sequelize.define('pengaju', pengajuSchema, {
   underscored: true,
+  timestamps: false,
 });
 
 module.exports = { sequelize, Pegawai, Pengaju };
