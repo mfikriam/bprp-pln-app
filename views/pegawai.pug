@@ -1,8 +1,38 @@
 extends base
 
 block main
-  h2 Data Pegawai PT. PLN (Persero)
-  p
-    | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed accumsan consectetur nisl, a
-    | fermentum mauris rhoncus vel. Nullam nec metus vel justo consectetur mattis.
-  // Add your content here
+  .row
+    .col-lg-12
+      .d-flex.justify-content-between.align-items-center
+        h2 Data Pegawai PT. PLN (Persero)
+        button.btn.btn-primary.m-2(type='button' data-bs-toggle='modal' data-bs-target='#modal-update-clusters-name') Tambah
+    .col-lg-12
+      // Table Pegawai
+      .table-responsive
+        table#pegawai-table.table.table-striped.table-sm
+          thead
+            tr
+              th.text-center Nama
+              th.text-center Jabatan
+              th.text-center Masa Kerja
+              th.text-center Grade Gaji
+              th.text-center Status Nikah
+              th.text-center Jumlah Anak
+              th.text-center Hutang Tempat Lain
+              th.text-center Kelayakan
+              th.text-center Aksi
+          tbody
+            each pegawai in pegawaiObjArr
+              tr
+                td= pegawai.nama
+                td= pegawai.jabatan
+                td= pegawai.masa_kerja
+                td= pegawai.grade_gaji
+                td= pegawai.status_nikah
+                td= pegawai.jumlah_anak
+                td= pegawai.hutang_tempat_lain
+                td= pegawai.kelayakan
+                td.text-center
+                  button.btn.btn-sm.btn-success.mb-1(type='button' data-bs-toggle='modal' data-bs-target=`#modal-update-obj-${pegawai.id}` style='width: 100%;') Ubah
+                  button.btn.btn-sm.btn-danger.btn--trash-user(type='button' data-bs-toggle='modal' data-bs-target=`#modal-delete-obj-${pegawai.id}` style='width: 100%;') Hapus
+      // End Table Pegawai

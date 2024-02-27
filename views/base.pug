@@ -26,9 +26,9 @@ nav.navbar.navbar-expand-lg.bg-light
     #navbarSupportedContent.collapse.navbar-collapse
       ul.navbar-nav.me-auto.mb-2.mb-lg-0
         li.nav-item
-          a.nav-link(href='/pegawai') Data Pegawai
+          a.nav-link.fs-5(href='/pegawai' class=`${modelName === 'pegawai' ? 'active' : ''}`) Data Pegawai
         li.nav-item
-          a.nav-link(href='/pengaju') Data Pengaju
+          a.nav-link.fs-5(href='/pengaju' class=`${modelName === 'pengaju' ? 'active' : ''}`) Data Pengaju
           
 // Main Content
 .container.mt-4
