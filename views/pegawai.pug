@@ -5,7 +5,7 @@ block main
     .col-lg-12
       .d-flex.justify-content-between.align-items-center
         h2 Data Pegawai PT. PLN (Persero)
-        button.btn.btn-primary.m-2(type='button' data-bs-toggle='modal' data-bs-target='#modal-update-clusters-name') Tambah
+        button.btn.btn-primary.m-2(type='button' data-bs-toggle='modal' data-bs-target='#modal-add-pegawai') Tambah
     .col-lg-12
       // Table Pegawai
       .table-responsive
@@ -36,3 +36,71 @@ block main
                   button.btn.btn-sm.btn-success.mb-1(type='button' data-bs-toggle='modal' data-bs-target=`#modal-update-obj-${pegawai.id}` style='width: 100%;') Ubah
                   button.btn.btn-sm.btn-danger.btn--trash-user(type='button' data-bs-toggle='modal' data-bs-target=`#modal-delete-obj-${pegawai.id}` style='width: 100%;') Hapus
       // End Table Pegawai
+
+  // Add Pegawai Modal
+  #modal-add-pegawai.modal.fade(data-bs-backdrop='static' data-bs-keyboard='false' tabindex='-1' aria-hidden='true')
+    .modal-dialog.modal-dialog-scrollable
+      .modal-content
+        .modal-header
+          h1.modal-title.fs-4 Tambah Data Pegawai
+          button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+        .modal-body
+          form#form-add-pegawai.row(novalidate)
+            .col-12.mb-3
+              label.form-label(for='add-nama') Nama
+              input#add-nama.form-control(type='text' name='nama' required)
+              .invalid-feedback Masukkan nama pegawai
+            .col-12.mb-3
+              label.form-label(for='add-jabatan') Jabatan
+              select#add-jabatan.form-select
+                option(value='Generalis') Generalis
+                option(value='Officer Kinerja') Officer Kinerja
+                option(value='TL Teknik') TL Teknik
+                option(value='TL Rensis') TL Rensis
+                option(value='Team Leader Administrasi dan Umum') Team Leader Administrasi dan Umum
+                option(value='TL SAR DAN YAN GAN') TL SAR DAN YAN GAN
+                option(value='JTC  Pengaturan Operasi') JTC  Pengaturan Operasi
+                option(value='Of Kinerja Transaksi Energi Listrik') Of Kinerja Transaksi Energi Listrik
+                option(value='Plt. Manager ULP') Plt. Manager ULP
+                option(value='JO Pengendalian Piutang') JO Pengendalian Piutang
+            .col-12.mb-3
+              label.form-label(for='add-masa_kerja') Masa Kerja
+              select#add-masa_kerja.form-select
+                option(value='< 1 Tahun')= '< 1 Tahun'
+                option(value='1 - 3 Tahun') 1 - 3 Tahun
+                option(value='4 - 6 Tahun') 4 - 6 Tahun
+                option(value='7 - 10 Tahun') 7 - 10 Tahun
+                option(value='> 10 Tahun')= '> 10 Tahun'
+            .col-12.mb-3
+              label.form-label(for='add-grade_gaji') Grade Gaji
+              select#add-grade_gaji.form-select
+                option(value='Grade 7 - 9') Grade 7 - 9
+                option(value='Grade 9 - 11') Grade 9 - 11
+                option(value='Grade 11 - 13') Grade 11 - 13
+            .col-12.mb-3
+              label.form-label(for='add-status_nikah') Status Nikah
+              select#add-status_nikah.form-select
+                option(value='Menikah') Menikah
+                option(value='Belum Menikah') Belum Menikah
+                option(value='Cerai') Cerai
+            .col-12.mb-3
+              label.form-label(for='add-jumlah_anak') Jumlah Anak
+              select#add-jumlah_anak.form-select
+                option(value='0 Anak') 0 Anak
+                option(value='1 - 2 Anak') 1 - 2 Anak
+                option(value='3 Anak') 3 Anak
+                option(value='> 3 Anak')= '> 3 Anak'
+            .col-12.mb-3
+              label.form-label(for='add-hutang_tempat_lain') Hutang Tempat Lain
+              select#add-hutang_tempat_lain.form-select
+                option(value='Ya') Ya
+                option(value='Tidak') Tidak
+            .col-12.mb-3
+              label.form-label(for='add-kelayakan') Kelayakan
+              select#add-kelayakan.form-select
+                option(value='Layak') Layak
+                option(value='Tidak Layak') Tidak Layak
+        .modal-footer
+          button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Cancel
+          button#btn-submit-pegawai.btn.btn-primary(type='submit' form='form-add-pegawai') Submit
+  // End Add Pegawai Modal

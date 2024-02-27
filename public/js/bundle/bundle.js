@@ -9944,6 +9944,7 @@ var _alert = require("./alert");
 
 //? DOM Element - Halaman Pegawai
 var pegawaiTable = document.querySelector('#pegawai-table');
+var addPegawaiForm = document.querySelector('#form-add-pegawai');
 
 //***************** Halaman Pegawai ********************/
 //? Datatables
@@ -9956,6 +9957,31 @@ if (pegawaiTable) {
     }]
   };
   new _simpleDatatables.DataTable(pegawaiTable, options);
+}
+
+//? Add Data
+if (addPegawaiForm) {
+  var addPegawaiModal = document.querySelector('#modal-add-pegawai');
+  var bsAddPegawaiModal = new bootstrap.Modal(addPegawaiModal);
+  addPegawaiForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    addPegawaiForm.classList.add('was-validated');
+    if (addPegawaiForm.checkValidity()) {
+      var pegawaiObj = {
+        nama: addPegawaiForm.querySelector('#add-nama').value,
+        jabatan: addPegawaiForm.querySelector('#add-jabatan').value,
+        masa_kerja: addPegawaiForm.querySelector('#add-masa_kerja').value,
+        grade_gaji: addPegawaiForm.querySelector('#add-grade_gaji').value,
+        status_nikah: addPegawaiForm.querySelector('#add-status_nikah').value,
+        jumlah_anak: addPegawaiForm.querySelector('#add-jumlah_anak').value,
+        hutang_tempat_lain: addPegawaiForm.querySelector('#add-hutang_tempat_lain').value,
+        kelayakan: addPegawaiForm.querySelector('#add-kelayakan').value
+      };
+      console.log(pegawaiObj);
+
+      // addNewData(modelName, dataObj, form, bsAddDataModal);
+    }
+  });
 }
 
 //************************** ALERT ********************************** */
