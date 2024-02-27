@@ -29,7 +29,11 @@ nav.navbar.navbar-expand-lg.bg-light
           a.nav-link.fs-5(href='/pegawai' class=`${modelName === 'pegawai' ? 'active' : ''}`) Data Pegawai
         li.nav-item
           a.nav-link.fs-5(href='/pengaju' class=`${modelName === 'pengaju' ? 'active' : ''}`) Data Pengaju
-          
+
+// Alert          
+.row.d-flex.flex-column.align-items-center.justify-content-center
+  #liveAlertPlaceholder.col-md-6.col-sm-8.position-fixed(style='z-index: 9999; right: 0; bottom: 0;')          
+
 // Main Content
 .container.mt-4
   block main
