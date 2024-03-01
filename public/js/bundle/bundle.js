@@ -15211,7 +15211,7 @@ var updateDataById = exports.updateDataById = /*#__PURE__*/function () {
   };
 }();
 var delDataById = exports.delDataById = /*#__PURE__*/function () {
-  var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(modelName, objId, Modals, userId) {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(modelName, objId, Modals) {
     return _regeneratorRuntime().wrap(function _callee3$(_context3) {
       while (1) switch (_context3.prev = _context3.next) {
         case 0:
@@ -15238,7 +15238,7 @@ var delDataById = exports.delDataById = /*#__PURE__*/function () {
       }
     }, _callee3, null, [[0, 7]]);
   }));
-  return function delDataById(_x11, _x12, _x13, _x14) {
+  return function delDataById(_x11, _x12, _x13) {
     return _ref3.apply(this, arguments);
   };
 }();
@@ -15383,6 +15383,8 @@ var _manageData = require("./manage-data");
 //? DOM Element - Halaman Pegawai
 var pegawaiTable = document.querySelector('#pegawai-table');
 var addPegawaiForm = document.querySelector('#form-add-pegawai');
+var updatePegawaiBtns = document.querySelectorAll('.btn-update-pegawai');
+var deletePegawaiBtns = document.querySelectorAll('.btn-delete-pegawai');
 
 //***************** Halaman Pegawai ********************/
 //? Datatables
@@ -15417,6 +15419,22 @@ if (addPegawaiForm) {
       };
       (0, _manageData.addNewData)('pegawai', pegawaiObj, addPegawaiForm, bsAddPegawaiModal);
     }
+  });
+}
+
+//? Update Data
+
+//? Delete Data
+if (deletePegawaiBtns.length > 0) {
+  var deletePegawaiModalList = document.querySelectorAll('[id^="modal-delete-pegawai"]');
+  var bsDeletePegawaiModalList = Array.from(deletePegawaiModalList).map(function (el) {
+    return new bootstrap.Modal(el);
+  });
+  deletePegawaiBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var pegawaiId = btn.dataset.objId;
+      (0, _manageData.delDataById)('pegawai', pegawaiId, bsDeletePegawaiModalList);
+    });
   });
 }
 

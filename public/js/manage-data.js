@@ -42,7 +42,7 @@ export const updateDataById = async (modelName, objId, data, form, Modals, userI
   }
 };
 
-export const delDataById = async (modelName, objId, Modals, userId) => {
+export const delDataById = async (modelName, objId, Modals) => {
   try {
     Modals.forEach((el) => el.hide());
 

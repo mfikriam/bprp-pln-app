@@ -8,6 +8,8 @@ import { addNewData, updateDataById, delDataById } from './manage-data';
 //? DOM Element - Halaman Pegawai
 const pegawaiTable = document.querySelector('#pegawai-table');
 const addPegawaiForm = document.querySelector('#form-add-pegawai');
+const updatePegawaiBtns = document.querySelectorAll('.btn-update-pegawai');
+const deletePegawaiBtns = document.querySelectorAll('.btn-delete-pegawai');
 
 //***************** Halaman Pegawai ********************/
 //? Datatables
@@ -42,6 +44,23 @@ if (addPegawaiForm) {
 
       addNewData('pegawai', pegawaiObj, addPegawaiForm, bsAddPegawaiModal);
     }
+  });
+}
+
+//? Update Data
+
+//? Delete Data
+if (deletePegawaiBtns.length > 0) {
+  const deletePegawaiModalList = document.querySelectorAll('[id^="modal-delete-pegawai"]');
+  const bsDeletePegawaiModalList = Array.from(deletePegawaiModalList).map(
+    (el) => new bootstrap.Modal(el),
+  );
+
+  deletePegawaiBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const pegawaiId = btn.dataset.objId;
+      delDataById('pegawai', pegawaiId, bsDeletePegawaiModalList);
+    });
   });
 }
 
