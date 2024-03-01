@@ -29,8 +29,8 @@ block main
                 td= pegawai.masa_kerja
                 td= pegawai.grade_gaji
                 td= pegawai.status_nikah
-                td= pegawai.jumlah_anak
-                td= pegawai.hutang_tempat_lain
+                td.text-center= pegawai.jumlah_anak
+                td.text-center= pegawai.hutang_tempat_lain
                 td= pegawai.kelayakan
                 td.text-center
                   button.btn.btn-sm.btn-success.mb-1(type='button' data-bs-toggle='modal' data-bs-target=`#modal-update-pegawai-${pegawai.id}` style='width: 100%;') Ubah

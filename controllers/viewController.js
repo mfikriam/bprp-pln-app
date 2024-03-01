@@ -1,5 +1,4 @@
-// const { Pegawai, Pengaju } = require('./../models');
-const { Pegawai } = require('./../models');
+const { Pegawai, Pengaju } = require('./../models');
 const catchAsync = require('./../utils/catchAsync');
 
 //**************************** EXPORTED FUNCTIONS *********************************/
@@ -22,9 +21,14 @@ exports.getPegawaiPage = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getPengajuPage = (req, res) => {
+exports.getPengajuPage = catchAsync(async (req, res, next) => {
+  const resultQuery = await Pengaju.findAll();
+  const resultQueryArr = resultQuery.map((instance) => instance.dataValues);
+
   res.status(200).render('pengaju', {
     title: 'Halaman Pengaju',
     modelName: 'pengaju',
+    pengajuObjArr: resultQueryArr,
+    pegawaiObjArr: (await Pegawai.findAll()).map((instance) => instance.dataValues),
   });
-};
+});
