@@ -48,6 +48,35 @@ if (addPegawaiForm) {
 }
 
 //? Update Data
+if (updatePegawaiBtns.length > 0) {
+  const updatePegawaiModalList = document.querySelectorAll('[id^="modal-update-pegawai"]');
+  const bsUpdatePegawaiModalList = Array.from(updatePegawaiModalList).map(
+    (el) => new bootstrap.Modal(el),
+  );
+  const updateDataFormList = document.querySelectorAll(`[id^="form-update-pegawai"]`);
+
+  updateDataFormList.forEach((form) => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      form.classList.add('was-validated');
+      const pegawaiId = form.dataset.objId;
+
+      if (form.checkValidity()) {
+        const pegawaiObj = {
+          nama: form.querySelector('#update-nama').value,
+          jabatan: form.querySelector('#update-jabatan').value,
+          masa_kerja: form.querySelector('#update-masa_kerja').value,
+          grade_gaji: form.querySelector('#update-grade_gaji').value,
+          status_nikah: form.querySelector('#update-status_nikah').value,
+          jumlah_anak: form.querySelector('#update-jumlah_anak').value,
+          hutang_tempat_lain: form.querySelector('#update-hutang_tempat_lain').value,
+          kelayakan: form.querySelector('#update-kelayakan').value,
+        };
+        updateDataById('pegawai', pegawaiId, pegawaiObj, form, bsUpdatePegawaiModalList);
+      }
+    });
+  });
+}
 
 //? Delete Data
 if (deletePegawaiBtns.length > 0) {

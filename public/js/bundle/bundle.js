@@ -15172,7 +15172,7 @@ var addNewData = exports.addNewData = /*#__PURE__*/function () {
   };
 }();
 var updateDataById = exports.updateDataById = /*#__PURE__*/function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(modelName, objId, data, form, Modals, userId) {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(modelName, objId, data, form, Modals) {
     var res, resObj;
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
@@ -15206,7 +15206,7 @@ var updateDataById = exports.updateDataById = /*#__PURE__*/function () {
       }
     }, _callee2, null, [[0, 7]]);
   }));
-  return function updateDataById(_x5, _x6, _x7, _x8, _x9, _x10) {
+  return function updateDataById(_x5, _x6, _x7, _x8, _x9) {
     return _ref2.apply(this, arguments);
   };
 }();
@@ -15238,7 +15238,7 @@ var delDataById = exports.delDataById = /*#__PURE__*/function () {
       }
     }, _callee3, null, [[0, 7]]);
   }));
-  return function delDataById(_x11, _x12, _x13) {
+  return function delDataById(_x10, _x11, _x12) {
     return _ref3.apply(this, arguments);
   };
 }();
@@ -15423,6 +15423,33 @@ if (addPegawaiForm) {
 }
 
 //? Update Data
+if (updatePegawaiBtns.length > 0) {
+  var updatePegawaiModalList = document.querySelectorAll('[id^="modal-update-pegawai"]');
+  var bsUpdatePegawaiModalList = Array.from(updatePegawaiModalList).map(function (el) {
+    return new bootstrap.Modal(el);
+  });
+  var updateDataFormList = document.querySelectorAll("[id^=\"form-update-pegawai\"]");
+  updateDataFormList.forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      form.classList.add('was-validated');
+      var pegawaiId = form.dataset.objId;
+      if (form.checkValidity()) {
+        var pegawaiObj = {
+          nama: form.querySelector('#update-nama').value,
+          jabatan: form.querySelector('#update-jabatan').value,
+          masa_kerja: form.querySelector('#update-masa_kerja').value,
+          grade_gaji: form.querySelector('#update-grade_gaji').value,
+          status_nikah: form.querySelector('#update-status_nikah').value,
+          jumlah_anak: form.querySelector('#update-jumlah_anak').value,
+          hutang_tempat_lain: form.querySelector('#update-hutang_tempat_lain').value,
+          kelayakan: form.querySelector('#update-kelayakan').value
+        };
+        (0, _manageData.updateDataById)('pegawai', pegawaiId, pegawaiObj, form, bsUpdatePegawaiModalList);
+      }
+    });
+  });
+}
 
 //? Delete Data
 if (deletePegawaiBtns.length > 0) {
@@ -15471,7 +15498,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63964" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59275" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

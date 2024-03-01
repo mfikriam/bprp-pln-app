@@ -22,7 +22,7 @@ export const addNewData = async (modelName, data, form, modal) => {
   }
 };
 
-export const updateDataById = async (modelName, objId, data, form, Modals, userId) => {
+export const updateDataById = async (modelName, objId, data, form, Modals) => {
   try {
     const res = await axios({
       method: 'PATCH',
