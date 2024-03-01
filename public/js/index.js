@@ -3,6 +3,7 @@ import '@babel/polyfill';
 import { DataTable } from 'simple-datatables';
 
 import { showAlert } from './alert';
+import { addNewData, updateDataById, delDataById } from './manage-data';
 
 //? DOM Element - Halaman Pegawai
 const pegawaiTable = document.querySelector('#pegawai-table');
@@ -39,9 +40,7 @@ if (addPegawaiForm) {
         kelayakan: addPegawaiForm.querySelector('#add-kelayakan').value,
       };
 
-      console.log(pegawaiObj);
-
-      // addNewData(modelName, dataObj, form, bsAddDataModal);
+      addNewData('pegawai', pegawaiObj, addPegawaiForm, bsAddPegawaiModal);
     }
   });
 }

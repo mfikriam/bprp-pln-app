@@ -21,3 +21,38 @@ export const addNewData = async (modelName, data, form, modal) => {
     validationErrorAlert(err);
   }
 };
+
+export const updateDataById = async (modelName, objId, data, form, Modals, userId) => {
+  try {
+    const res = await axios({
+      method: 'PATCH',
+      url: `/api/v1/${modelName}/${objId}`,
+      data,
+    });
+
+    if (res.data.status === 'success') {
+      const resObj = res.data.data[modelName];
+      Modals.forEach((el) => el.hide());
+
+      delayAlert(`Data ${modelName} berhasil diubah`, 'success');
+    }
+  } catch (err) {
+    form.classList.remove('was-validated');
+    validationErrorAlert(err);
+  }
+};
+
+export const delDataById = async (modelName, objId, Modals, userId) => {
+  try {
+    Modals.forEach((el) => el.hide());
+
+    await axios({
+      method: 'DELETE',
+      url: `/api/v1/${modelName}/${objId}`,
+    });
+
+    delayAlert(`Data ${modelName} berhasil dihapus`, 'success');
+  } catch (err) {
+    showAlert(err.response.data.message, 'danger');
+  }
+};
