@@ -117,8 +117,13 @@ if (pengajuTable) {
 
   //? Split Dataset Pegawai
   const splitIndex = Math.floor(pegawaiObjArr.length * 0.9);
-  dataTrain = pegawaiObjArr.slice(0, splitIndex);
-  dataTest = pegawaiObjArr.slice(splitIndex);
+  // dataTrain = pegawaiObjArr.slice(0, splitIndex);
+  dataTrain = [...pegawaiObjArr];
+  if (pegawaiObjArr.length >= 10) {
+    dataTest = pegawaiObjArr.slice(-10);
+  } else {
+    dataTest = pegawaiObjArr.slice(splitIndex);
+  }
 }
 
 //? Add Data Pengaju
